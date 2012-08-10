@@ -1,0 +1,20 @@
+the plan:
+  - reserved words like _at_, _oclock_
+  - word numbers - one, two etc.
+  - modifiers - am, pm
+
+what this accomplishes?
+  - more targeted patterns
+
+like: 
+  - 7:00 - {number colon number} - standard time
+  - 7 am, 7am - {number modifier}
+  - 8 - {number} - by default uses current part of day
+  - at seven oclock {reserved number reserved}
+  - seven {number}
+
+so, the task is:
+  - add more information to tokens during parsing
+    - save initial value
+    - save type
+    - parse value of word number

@@ -1,9 +1,10 @@
-window.InputReader = class InputReader
-  constructor: (@input) ->
-    @position = 0
+define [], ->
+  class InputReader
+    constructor: (@input) ->
+      @position = 0
 
-  nextChar: ->
-    @input[@position++]
+    nextChar: ->
+      @input[@position++]
 
-  currentChar: ->
-    @input[@position]
+    currentChar: ->
+      @input[@position]

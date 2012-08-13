@@ -1,9 +1,10 @@
-window.Parser = class Parser
-  constructor: (@scanner) ->
+define [], () ->
+  class Parser
+    constructor: (@scanner) ->
 
-  parse: ->
-    tokens = []
-    while (token = @scanner.nextToken()).token isnt 'end'
-      tokens.push token
+    parse: ->
+      tokens = []
+      while (token = @scanner.nextToken()).token isnt 'end'
+        tokens.push token
 
-    tokens
+      tokens

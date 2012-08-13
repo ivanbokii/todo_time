@@ -1,40 +1,41 @@
-window.Scanner = class Scanner
-  constructor: (@inputReader, @scannerWordsAnalyser) ->
-    @currentToken = null
-  
-  currentToken: ->
-    @currentToken
-
-  nextToken: ->
-    @currentToken = @_extractToken()
-    @currentToken
-
-  _extractToken: ->
-    @_skipWhitespaces()
+define ['char_checker', 'token'], (CharChecker, Token) ->
+  class Scanner
+    constructor: (@inputReader, @scannerWordsAnalyser) ->
+      @currentToken = null
     
-    currentChar = @inputReader.currentChar()
+    currentToken: ->
+      @currentToken
 
-    token = null
-    if CharChecker.isNumber currentChar
-      token = new Token @inputReader, 'number', CharChecker.isNumber
-      token.value = parseInt token.value
-    
-    else if CharChecker.isAlpha currentChar
-      token = new Token @inputReader, 'word', CharChecker.isAlpha
+    nextToken: ->
+      @currentToken = @_extractToken()
+      @currentToken
 
-      scannerWordsAnalyser.timeModifierCheck token
-      scannerWordsAnalyser.wordNumberCheck token
-    
-    else  if CharChecker.isColon currentChar
-      token = new Token @inputReader, 'colon'
+    _extractToken: ->
+      @_skipWhitespaces()
+      
+      currentChar = @inputReader.currentChar()
 
-    else if currentChar is undefined
-      token = new Token @inputReader, 'end'
+      token = null
+      if CharChecker.isNumber currentChar
+        token = new Token @inputReader, 'number', CharChecker.isNumber
+        token.value = parseInt token.value
+      
+      else if CharChecker.isAlpha currentChar
+        token = new Token @inputReader, 'word', CharChecker.isAlpha
 
-    else
-      token = new Token @inputReader, 'undef'
-    
-    token
+        @scannerWordsAnalyser.timeModifierCheck token
+        @scannerWordsAnalyser.wordNumberCheck token
+      
+      else  if CharChecker.isColon currentChar
+        token = new Token @inputReader, 'colon'
 
-  _skipWhitespaces: ->
-    while @inputReader.currentChar() is ' ' then @inputReader.nextChar()
+      else if currentChar is undefined
+        token = new Token @inputReader, 'end'
+
+      else
+        token = new Token @inputReader, 'undef'
+      
+      token
+
+    _skipWhitespaces: ->
+      while @inputReader.currentChar() is ' ' then @inputReader.nextChar()

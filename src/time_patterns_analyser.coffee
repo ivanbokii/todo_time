@@ -1,20 +1,20 @@
-window.TimePatternsAnalyser = class TimePatternsAnalyser
-  patterns = [
-      {
-        #at five oclock
-        sequence: 'word number word'
-        validator: @validate
-        transformer: @transform
-      }
-    ]
+define ['patterns/simple', 'patterns/simple_modifier', 'patterns/number', 'patterns/number_modifier'], 
+(Simple, SimpleModifier, NumberTime, NumberModifierTime) ->
+  class TimePatternsAnalyser
+    patterns: [
+        new SimpleModifier()
+        new Simple()
+        new NumberModifierTime()
+        new NumberTime()
+      ]
 
-  analyse: (tokens) ->
-    testPattern = patterns[0]
-    types = _.pluck(tokens, 'token').join(' ')
-    console.log testPattern.sequence is types
+    analyse: (tokens) ->
+      series = _.pluck(tokens, 'token').join(' ')
 
-  check: (types, pattern) ->
+      result = _.pluck(tokens, 'raw').join(' ')
+      for pattern in @patterns
+        if pattern.check(series) and pattern.validate(tokens)
+          result = pattern.transform tokens
+          break
 
-  validate: (tokens) ->
-
-  transform: (tokens) ->
+      result

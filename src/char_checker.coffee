@@ -1,12 +1,14 @@
-window.CharChecker = class CharChecker
-  @numberReg = /^[0-9]$/
-  @alphaReg = /^[A-Za-z]$/
+define [], ->
 
-  @isNumber: (char) ->
-    @numberReg.test char
+  class CharChecker
+    @numberReg = /^[0-9]$/
+    @alphaReg = /^[A-Za-z]$/
 
-  @isAlpha: (char) ->
-    @alphaReg.test char
+    @isNumber: (char) ->
+      @numberReg.test char
 
-  @isColon: (char) ->
-    char is ':'
+    @isAlpha: (char) ->
+      @alphaReg.test char
+
+    @isColon: (char) ->
+      char is ':'

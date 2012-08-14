@@ -14,7 +14,7 @@ requirejs ['parser', 'scanner', 'input_reader', 'scanner_words_analyser', 'time_
       timePatternsAnalyser = new TimePatternsAnalyser()
       analyseResult = timePatternsAnalyser.analyse result
 
-      unless analysedResult? then inputValue
+      if analyseResult is null then inputValue else analyseResult
 
     window.todo.duration = (inputValue) ->
       inputReader = new InputReader inputValue
@@ -27,6 +27,6 @@ requirejs ['parser', 'scanner', 'input_reader', 'scanner_words_analyser', 'time_
       # $('.duration .tokens').text _.pluck result, 'token'
 
       durationPatternsAnalyser = new DurationPatternsAnalyser()
-      analysedResult = durationPatternsAnalyser.analyse result
+      analyseResult = durationPatternsAnalyser.analyse result
 
-      unless analysedResult? then inputValue
+      if analyseResult is null then inputValue else analyseResult.toString()

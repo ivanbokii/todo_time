@@ -939,25 +939,27 @@ define("vendor/almond.js", function(){});
       scanner = new Scanner(inputReader, scannerWordsAnalyser);
       parser = new Parser(scanner);
       result = parser.parse(inputValue);
-      $('.time .tokens').text(_.pluck(result, 'token'));
       timePatternsAnalyser = new TimePatternsAnalyser();
       analyseResult = timePatternsAnalyser.analyse(result);
-      if (typeof analysedResult === "undefined" || analysedResult === null) {
+      if (analyseResult === null) {
         return inputValue;
+      } else {
+        return analyseResult;
       }
     };
     return window.todo.duration = function(inputValue) {
-      var analysedResult, durationPatternsAnalyser, inputReader, parser, result, scanner, scannerWordsAnalyser;
+      var analyseResult, durationPatternsAnalyser, inputReader, parser, result, scanner, scannerWordsAnalyser;
       inputReader = new InputReader(inputValue);
       scannerWordsAnalyser = new ScannerWordsAnalyser();
       scanner = new Scanner(inputReader, scannerWordsAnalyser);
       parser = new Parser(scanner);
       result = parser.parse(inputValue);
-      $('.duration .tokens').text(_.pluck(result, 'token'));
       durationPatternsAnalyser = new DurationPatternsAnalyser();
-      analysedResult = durationPatternsAnalyser.analyse(result);
-      if (analysedResult == null) {
+      analyseResult = durationPatternsAnalyser.analyse(result);
+      if (analyseResult === null) {
         return inputValue;
+      } else {
+        return analyseResult.toString();
       }
     };
   });

@@ -1,2 +1,3 @@
-lib/patterns/*.js
+lib/time_patterns/*.js
+lib/duration_patterns/*.js
 lib/*.js

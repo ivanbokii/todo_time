@@ -8,3 +8,9 @@ samples:
   - 8 - {number} - by default uses current part of day
   - at seven oclock {reserved number reserved}  !! not yet implemented
   - seven {number}
+
+duration:
+- 30 - {number} - 30 minutes
+- 3 minutes/min/m/hours/hour/h - {number time_unit} - 3 units of specified time
+- hour - {time_unit} - 1 hour
+- one hour, five minutes - {number time_unit} - number of time units

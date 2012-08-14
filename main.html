@@ -1,25 +1,45 @@
 <html>
-<head>
-  <title>TD Parser test page</title>
-  <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
+  <head>
+    <title>TD Parser test page</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
 
-  <script data-main="lib/app" src="lib/vendor/require.js"></script>
+    <script data-main="lib/app" src="lib/vendor/require.js"></script>
 
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $('.parse').click(function () {
-        var inputValue = $(".input").val();
-        var result = todo.time(inputValue)
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.time .parse').click(function () {
+          var inputValue = $(".time .input").val();
+          var result = todo.time(inputValue)
 
-        $('.output').text(result);
+          $('.time .output').text(result);
+        });
+
+        $('.duration .parse').click(function () {
+          var inputValue = $(".duration .input").val();
+          var result = todo.duration(inputValue)
+
+          $('.duration .output').text(result);
+        });
       });
-    });
-  </script>
-</head>
-<body>
-  <span>input: </span> <input class="input" type="text" style="width: 300px"/>
-  <button class="parse">Parse</button>
-  <span>output: </span> <span class="output"></span>
+    </script>
+  </head>
+  <body>
+    <div class="time">
+      <h3>time test</h3>
+      <span>input: </span> <input class="input" type="text" style="width: 300px"/>
+      <button class="parse">Parse</button>
+      <span>output: </span> <span class="output"></span>
+      <br>
+      <span>tokens: </span> <span class="tokens"></span>
+    </div>
+    <div class="duration">
+      <h3>duration test</h3>
+      <span>input: </span> <input class="input" type="text" style="width: 300px"/>
+      <button class="parse">Parse</button>
+      <span>output: </span> <span class="output"></span>
+      <br>
+      <span>tokens: </span> <span class="tokens"></span>
+    </div>
 </body>
 </html>

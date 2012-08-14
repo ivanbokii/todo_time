@@ -1,11 +1,10 @@
-define ['time_patterns/simple', 'time_patterns/simple_modifier', 'time_patterns/number', 'time_patterns/number_modifier'], 
-(Simple, SimpleModifier, NumberTime, NumberModifierTime) ->
-  class TimePatternsAnalyser
+define ['duration_patterns/simple', 'duration_patterns/simple_unit', 'duration_patterns/complex_unit'], 
+(Simple, SimpleUnit, ComplexUnit) ->
+  class DurationPatternsAnalyser
     patterns: [
-        new SimpleModifier()
+        new ComplexUnit()
+        new SimpleUnit()
         new Simple()
-        new NumberModifierTime()
-        new NumberTime()
       ]
 
     analyse: (tokens) ->

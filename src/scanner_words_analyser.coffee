@@ -1,5 +1,5 @@
 define [], ->
-  class ScannerWordsanalyser
+  class ScannerWordsAnalyser
     wordsNumbers:
       one: 1
       two: 2
@@ -14,6 +14,10 @@ define [], ->
       eleven: 11
       twelve: 12
 
+    time_units:
+      m: ['m', 'min', 'minute', 'minutes']
+      h: ['h', 'hr', 'hour', 'hours']
+
     timeModifierCheck: (token) ->
       if token.raw is 'am' or token.raw is 'pm'
         token.token = 'time_modifier'
@@ -25,3 +29,11 @@ define [], ->
         if word is token.raw
           token.token = 'number'
           token.value = number
+
+    timeUnitCheck: (token) ->
+      if _.any(@time_units.m, (m) -> token.raw is m)
+        token.token = 'time_unit'
+        token.value = 'm'
+      else if _.any(@time_units.h, (h) -> token.raw is h)
+        token.token = 'time_unit'
+        token.value = 'h'

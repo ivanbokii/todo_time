@@ -25,6 +25,7 @@ define ['char_checker', 'token'], (CharChecker, Token) ->
 
         @scannerWordsAnalyser.timeModifierCheck token
         @scannerWordsAnalyser.wordNumberCheck token
+        @scannerWordsAnalyser.timeUnitCheck token
       
       else  if CharChecker.isColon currentChar
         token = new Token @inputReader, 'colon'

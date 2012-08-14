@@ -9,7 +9,7 @@ requirejs ['parser', 'scanner', 'input_reader', 'scanner_words_analyser', 'time_
       parser = new Parser scanner
       result = parser.parse inputValue
 
-      $('.time .tokens').text _.pluck result, 'token'
+      # $('.time .tokens').text _.pluck result, 'token'
 
       timePatternsAnalyser = new TimePatternsAnalyser()
       analyseResult = timePatternsAnalyser.analyse result
@@ -24,7 +24,7 @@ requirejs ['parser', 'scanner', 'input_reader', 'scanner_words_analyser', 'time_
       parser = new Parser scanner
       result = parser.parse inputValue
 
-      $('.duration .tokens').text _.pluck result, 'token'
+      # $('.duration .tokens').text _.pluck result, 'token'
 
       durationPatternsAnalyser = new DurationPatternsAnalyser()
       analysedResult = durationPatternsAnalyser.analyse result

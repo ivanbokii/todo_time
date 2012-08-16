@@ -1,3 +1,6 @@
 lib/time_patterns/*.js
 lib/duration_patterns/*.js
+lib/fuzzy_patterns/*.js
 lib/*.js
+*.sublime-project
+*.sublime-workspace

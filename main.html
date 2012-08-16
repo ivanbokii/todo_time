@@ -21,6 +21,13 @@
 
           $('.duration .output').text(result);
         });
+
+        $('.fuzzy .parse').click(function () {
+          var inputValue = $(".fuzzy .input").val();
+          var result = todo.fuzzy(inputValue)
+
+          $('.fuzzy .output').text(result);
+        });
       });
     </script>
   </head>
@@ -35,6 +42,14 @@
     </div>
     <div class="duration">
       <h3>duration test</h3>
+      <span>input: </span> <input class="input" type="text" style="width: 300px"/>
+      <button class="parse">Parse</button>
+      <span>output: </span> <span class="output"></span>
+      <br>
+      <span>tokens: </span> <span class="tokens"></span>
+    </div>
+    <div class="fuzzy">
+      <h3>fuzzy test</h3>
       <span>input: </span> <input class="input" type="text" style="width: 300px"/>
       <button class="parse">Parse</button>
       <span>output: </span> <span class="output"></span>

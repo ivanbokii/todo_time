@@ -2,10 +2,10 @@ define ['duration_patterns/simple', 'duration_patterns/simple_unit', 'duration_p
 (Simple, SimpleUnit, ComplexUnit) ->
   class DurationPatternsAnalyser
     patterns: [
-        new ComplexUnit()
-        new SimpleUnit()
-        new Simple()
-      ]
+      new ComplexUnit()
+      new SimpleUnit()
+      new Simple()
+    ]
 
     analyse: (tokens) ->
       series = _.pluck(tokens, 'token').join(' ')

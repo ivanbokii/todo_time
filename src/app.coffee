@@ -31,7 +31,7 @@ requirejs ['parser', 'scanner', 'input_reader', 'scanner_words_analyser',
       durationPatternsAnalyser = new DurationPatternsAnalyser()
       analyseResult = durationPatternsAnalyser.analyse result
 
-      if analyseResult is null then inputValue else analyseResult.toString()
+      if analyseResult is null then inputValue else analyseResult
 
     window.todo.fuzzy = (inputValue) ->
       inputReader = new InputReader inputValue
@@ -41,9 +41,7 @@ requirejs ['parser', 'scanner', 'input_reader', 'scanner_words_analyser',
       parser = new Parser scanner
       result = parser.parse inputValue
 
-      # $('.duration .tokens').text _.pluck result, 'token'
-
       fuzzyPatternsAnalyser = new FuzzyPatternsAnalyser()
-      analyseResult = fuzzyPatternsAnalyser.analyseTime result
+      analyseResult = fuzzyPatternsAnalyser.analyse result, inputValue
 
-      if analyseResult is null then inputValue else analyseResult.toString()
+      analyseResult

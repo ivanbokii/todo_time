@@ -26,7 +26,8 @@
           var inputValue = $(".fuzzy .input").val();
           var result = todo.fuzzy(inputValue)
 
-          $('.fuzzy .output').text(result);
+          $('.fuzzy .output').text('time: ' + result.time + ' duration: ' + result.duration + ' input: ' +
+              result.modifiedInput);
         });
       });
     </script>

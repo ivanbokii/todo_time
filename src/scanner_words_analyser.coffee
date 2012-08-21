@@ -8,15 +8,15 @@ define [], ->
       five: 5
       six: 6
       seven: 7
-      eigth: 8
+      eight: 8
       nine: 9
       ten: 10
       eleven: 11
       twelve: 12
 
     time_units:
-      m: ['m', 'min', 'minute', 'minutes']
-      h: ['h', 'hr', 'hour', 'hours']
+      m: ['m', 'min', 'mins', 'minute', 'minutes']
+      h: ['h', 'hr', 'hrs', 'hour', 'hours']
 
     timeModifierCheck: (token) ->
       if token.raw is 'am' or token.raw is 'pm'

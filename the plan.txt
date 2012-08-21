@@ -14,3 +14,22 @@ duration:
 - 3 minutes/min/m/hours/hour/h - {number time_unit} - 3 units of specified time
 - hour - {time_unit} - 1 hour
 - one hour, five minutes - {number time_unit} - number of time units
+
+fuzzy analyser:
+- number time number, like 8:00
+- number time number modifier, like 8:00 am/pm
+- number modifier, like 8 am/pm
+
+update fuzzy analyser to parse time and duration
+  - parse duration first, then remove tokens from input stream and pass to time
+    analyser
+
+duration analyse:
+  - analyse all time patterns from the input
+  - add tokens "time_pattern"
+  - analyse from time pattern to time pattern sequences
+
+  the problem:
+  - analyse all time patterns
+  from 8:00 am to 8:00 pm
+  possible solution: analyse all and then check for overlaps

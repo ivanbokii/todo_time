@@ -14,8 +14,12 @@ define [], ->
 
     transform: (tokens) ->
       hours = tokens[0].value
-      if tokens[3].value is 'pm'
-        hours = tokens[0].value + 12
+      timeModifier tokens[3].value
+
+      if timeModifier is 'am'
+        if hours is 12 then hours = hours - 12
+      else if timeModifier is 'pm'
+        if hours isnt 12 then hours = hours + 12
 
       hoursValue = hours
       hoursValue = if hoursValue < 10 then '0' + hoursValue else hoursValue

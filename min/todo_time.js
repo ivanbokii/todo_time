@@ -665,10 +665,17 @@ define("vendor/almond.js", function(){});
       };
 
       SimpleModifier.prototype.transform = function(tokens) {
-        var hours, hoursValue, minutesValue;
+        var hours, hoursValue, minutesValue, timeModifier;
         hours = tokens[0].value;
-        if (tokens[3].value === 'pm') {
-          hours = tokens[0].value + 12;
+        timeModifier = tokens[3].value;
+        if (timeModifier === 'am') {
+          if (hours === 12) {
+            hours = hours - 12;
+          }
+        } else if (timeModifier === 'pm') {
+          if (hours !== 12) {
+            hours = hours + 12;
+          }
         }
         hoursValue = hours;
         hoursValue = hoursValue < 10 ? '0' + hoursValue : hoursValue;
@@ -742,10 +749,17 @@ define("vendor/almond.js", function(){});
       };
 
       NumberModifierTime.prototype.transform = function(tokens) {
-        var hours, hoursValue, minutesValue;
+        var hours, hoursValue, minutesValue, timeModifier;
         hours = tokens[0].value;
-        if (tokens[1].value === 'pm') {
-          hours = tokens[0].value + 12;
+        timeModifier = tokens[1].value;
+        if (timeModifier === 'am') {
+          if (hours === 12) {
+            hours = hours - 12;
+          }
+        } else if (timeModifier === 'pm') {
+          if (hours !== 12) {
+            hours = hours + 12;
+          }
         }
         hoursValue = hours;
         hoursValue = hoursValue < 10 ? '0' + hoursValue : hoursValue;
@@ -1002,8 +1016,15 @@ define("vendor/almond.js", function(){});
       SimpleTimeModifier.prototype.transform = function(tokens) {
         var hours, hoursValue, minutesValue;
         hours = tokens[0].value;
-        if (tokens[3].value === 'pm') {
-          hours = tokens[0].value + 12;
+        timeModifier(tokens[3].value);
+        if (timeModifier === 'am') {
+          if (hours === 12) {
+            hours = hours - 12;
+          }
+        } else if (timeModifier === 'pm') {
+          if (hours !== 12) {
+            hours = hours + 12;
+          }
         }
         hoursValue = hours;
         hoursValue = hoursValue < 10 ? '0' + hoursValue : hoursValue;
@@ -1043,10 +1064,17 @@ define("vendor/almond.js", function(){});
       };
 
       NumberTimeModifier.prototype.transform = function(tokens) {
-        var hours, hoursValue, minutesValue;
+        var hours, hoursValue, minutesValue, timeModifier;
         hours = tokens[0].value;
-        if (tokens[1].value === 'pm') {
-          hours = tokens[0].value + 12;
+        timeModifier = tokens[1].value;
+        if (timeModifier === 'am') {
+          if (hours === 12) {
+            hours = hours - 12;
+          }
+        } else if (timeModifier === 'pm') {
+          if (hours !== 12) {
+            hours = hours + 12;
+          }
         }
         hoursValue = hours;
         hoursValue = hoursValue < 10 ? '0' + hoursValue : hoursValue;

@@ -61,8 +61,8 @@ define ['fuzzy_patterns/simple_time', 'fuzzy_patterns/simple_time_modifier',
           firstTime = tokensToAnalyse[1].value.transform tokensToAnalyse[1].raw
           secondTime = tokensToAnalyse[3].value.transform tokensToAnalyse[3].raw
 
-          firstHoursAndMinutes = _.map firstTime.split(':'), (r) -> parseInt(r)
-          secondHoursAndMinutes = _.map secondTime.split(':'), (r) -> parseInt(r)
+          firstHoursAndMinutes = _.map firstTime.split(':'), (r) -> parseInt(r, 10)
+          secondHoursAndMinutes = _.map secondTime.split(':'), (r) -> parseInt(r, 10)
 
           hoursValid = secondHoursAndMinutes[0] >= firstHoursAndMinutes[0]
           minutesValid = secondHoursAndMinutes[0] is firstHoursAndMinutes[0] and secondHoursAndMinutes[1] >

@@ -1014,9 +1014,9 @@ define("vendor/almond.js", function(){});
       };
 
       SimpleTimeModifier.prototype.transform = function(tokens) {
-        var hours, hoursValue, minutesValue;
+        var hours, hoursValue, minutesValue, timeModifier;
         hours = tokens[0].value;
-        timeModifier(tokens[3].value);
+        timeModifier = tokens[3].value;
         if (timeModifier === 'am') {
           if (hours === 12) {
             hours = hours - 12;

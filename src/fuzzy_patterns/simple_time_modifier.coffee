@@ -14,7 +14,7 @@ define [], ->
 
     transform: (tokens) ->
       hours = tokens[0].value
-      timeModifier tokens[3].value
+      timeModifier = tokens[3].value
 
       if timeModifier is 'am'
         if hours is 12 then hours = hours - 12
